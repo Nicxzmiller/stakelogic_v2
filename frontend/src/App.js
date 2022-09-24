@@ -1,30 +1,22 @@
-import data from './data';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+import GameScreen from './screens/GameScreen';
 
 function App() {
   return (
-    <div>
-      <header>
-        <a href="/">Stakelogic</a>
-      </header>
-      <main>
-        <h1>Featured Games</h1>
-        <div className="games">
-          {data.games.map((game) => (
-            <div className="game" key={game.slug}>
-              <a href={`/game/${game.slug}`}>
-                <img src={game.image} alt={game.name} />
-              </a>
-              <div className="game-info">
-                <a href={`/game/${game.slug}`}>
-                  <p>{game.name}</p>
-                </a>
-                <p>{game.category}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </main>
-    </div>
+    <BrowserRouter>
+      <div>
+        <header>
+          <Link to="/">Stakelogic</Link>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/game/:slug" element={<GameScreen />} />
+            <Route path="/" element={<HomeScreen />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 
