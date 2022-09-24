@@ -17,3 +17,29 @@ header a {
   font-weight: bold;
   text-decoration: none;
 }
+
+main {
+  padding: 1rem;
+}
+
+.games {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.game {
+  border: 1px #00d45c solid;
+  border-radius: 10px;
+  margin: 1rem;
+}
+
+.game img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px 10px 0 0;
+}
+
+.game-info {
+  padding: 0.5rem;
+}
