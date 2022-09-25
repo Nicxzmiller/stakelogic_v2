@@ -18,6 +18,12 @@ const data = {
       category: 'Game Shows',
       image: '/images/gameshow.jpeg',
     },
+    {
+      name: 'Slots',
+      slug: 'Slot Games',
+      category: 'Slots',
+      image: '/images/slot.jpg',
+    },
   ],
 };
 
