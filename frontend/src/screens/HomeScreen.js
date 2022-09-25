@@ -1,14 +1,39 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import data from '../data';
+import logger from 'use-reducer-logger';
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_REQUEST':
+      return { ...state, loading: true };
+    case 'FETCH_SUCCESS':
+      return { ...state, games: action.payload, loading: false };
+    case 'FETCH_FAIL':
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 function HomeScreen() {
-  const [games, setGames] = useState([]);
+  const [{ loading, error, games }, dispatch] = useReducer(logger(reducer), {
+    games: [],
+    loading: true,
+    error: '',
+  });
+  // const [games, setGames] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('/api/games');
-      setGames(result.data);
+      dispatch({ type: 'FETCH_REQUEST' });
+      try {
+        const result = await axios.get('/api/games');
+        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+      } catch (err) {
+        dispatch({ type: 'FETCH_FAIL', payload: err.message });
+      }
+
+      //setGames(result.data);
     };
     fetchData();
   }, []);
@@ -17,19 +42,25 @@ function HomeScreen() {
     <div>
       <h1>Featured Games</h1>
       <div className="games">
-        {games.map((game) => (
-          <div className="game" key={game.slug}>
-            <Link to={`/game/${game.slug}`}>
-              <img src={game.image} alt={game.name} />
-            </Link>
-            <div className="game-info">
+        {loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>{error}</div>
+        ) : (
+          games.map((game) => (
+            <div className="game" key={game.slug}>
               <Link to={`/game/${game.slug}`}>
-                <p>{game.name}</p>
+                <img src={game.image} alt={game.name} />
               </Link>
-              <p>{game.category}</p>
+              <div className="game-info">
+                <Link to={`/game/${game.slug}`}>
+                  <p>{game.name}</p>
+                </Link>
+                <p>{game.category}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
