@@ -1,7 +1,10 @@
 import { useState, useEffect, useReducer } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Game from '../components/Game';
+import { Helmet } from 'react-helmet-async';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -40,6 +43,9 @@ function HomeScreen() {
 
   return (
     <div>
+      <Helmet>
+        <title>Stakelogic</title>
+      </Helmet>
       <h1>Featured Games</h1>
       <div className="games">
         {loading ? (
@@ -47,19 +53,13 @@ function HomeScreen() {
         ) : error ? (
           <div>{error}</div>
         ) : (
-          games.map((game) => (
-            <div className="game" key={game.slug}>
-              <Link to={`/game/${game.slug}`}>
-                <img src={game.image} alt={game.name} />
-              </Link>
-              <div className="game-info">
-                <Link to={`/game/${game.slug}`}>
-                  <p>{game.name}</p>
-                </Link>
-                <p>{game.category}</p>
-              </div>
-            </div>
-          ))
+          <Row>
+            {games.map((game) => (
+              <Col className="mb-3" sm={6} md={4} lg={3} key={game.slug}>
+                <Game game={game} />
+              </Col>
+            ))}
+          </Row>
         )}
       </div>
     </div>

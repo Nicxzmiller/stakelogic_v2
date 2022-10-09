@@ -26,6 +26,13 @@ main {
   flex: 1;
 }
 
+.btn-primary {
+  background-color: #00d45c;
+  color: #07002e;
+  font-weight: 600;
+  border: none;
+}
+
 .games {
   display: flex;
   flex-wrap: wrap;
@@ -46,4 +53,18 @@ main {
 
 .game-info {
   padding: 0.5rem;
+}
+
+.img-large {
+  max-width: 100%;
+}
+
+.betType {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.betType:hover {
+  color: #00d45c;
 }
