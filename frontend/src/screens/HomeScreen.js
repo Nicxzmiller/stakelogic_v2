@@ -4,7 +4,9 @@ import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Game from '../components/Game';
+import LoadingSpin from 'react-loading-spin';
 import { Helmet } from 'react-helmet-async';
+import MessageBox from '../components/MessageBox';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -49,9 +51,11 @@ function HomeScreen() {
       <h1>Featured Games</h1>
       <div className="games">
         {loading ? (
-          <div>Loading...</div>
+          <div>
+            <LoadingSpin />
+          </div>
         ) : error ? (
-          <div>{error}</div>
+          <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <Row>
             {games.map((game) => (

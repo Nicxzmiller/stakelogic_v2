@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import LoadingSpin from 'react-loading-spin';
 import { Helmet } from 'react-helmet-async';
+import MessageBox from '../components/MessageBox';
+import { getError } from '../utils';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -37,7 +39,7 @@ function GameScreen() {
         const result = await axios.get(`/api/games/slug/${slug}`);
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: err.message });
+        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
 
       //setGames(result.data);
@@ -46,11 +48,11 @@ function GameScreen() {
   }, [slug]);
 
   return loading ? (
-    <div>
+    <div className="games">
       <LoadingSpin />
     </div>
   ) : error ? (
-    <div>{error}</div>
+    <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div>
       <Row>
