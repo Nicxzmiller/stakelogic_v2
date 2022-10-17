@@ -7,6 +7,10 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Logo from './logo.png';
 
 import { WavyContainer, WavyLink } from 'react-wavy-transitions';
+import { Link } from 'react-router-dom';
+import RefundScreen from './screens/RefundScreen';
+import Button from 'react-bootstrap/Button';
+import SignInScreen from './screens/SignInScreen';
 
 function App() {
   return (
@@ -21,8 +25,12 @@ function App() {
                   <img src={Logo} alt="logo" />
                 </Navbar.Brand>
               </LinkContainer>
-              <nav>
-                <button>Refund</button>
+              <nav className="navContainer">
+                <Button href="refund">Refund</Button>
+                <Button href="signin">Sign In</Button>
+                {/* <Link to="/refund">
+                  <RefundScreen />
+                </Link> */}
               </nav>
             </Container>
           </Navbar>
@@ -41,7 +49,10 @@ function App() {
                 }
               /> */}
               <Route path="/game/:slug" element={<GameScreen />} />
-              <Route path="/" element={<HomeScreen />} />
+              <Route path="/refund" element={<RefundScreen />} />
+              <Route path="/signin" element={<SignInScreen />} />
+
+              <Route index element={<HomeScreen />} />
             </Routes>
           </Container>
         </main>

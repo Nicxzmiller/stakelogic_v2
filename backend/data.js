@@ -1,12 +1,14 @@
 const data = {
   games: [
     {
+      _id: '1',
       name: 'BlackJack',
       slug: 'American Blackjack',
       category: 'Card games',
       image: '/images/bj.jpg',
       betTypes: [
         {
+          _id: '1',
           name: 'Flush',
           det: 'Flush',
           category: 'American Blackjack',
@@ -15,6 +17,7 @@ const data = {
           image: '',
         },
         {
+          _id: '2',
           name: 'Mixed Color Pair',
           det: 'MXP',
           category: 'American Blackjack',
@@ -23,6 +26,7 @@ const data = {
           image: '',
         },
         {
+          _id: '3',
           name: 'Same Color Pair',
           det: 'SCP',
           category: 'American Blackjack',
@@ -31,6 +35,7 @@ const data = {
           image: '',
         },
         {
+          _id: '4',
           name: 'Straight Flush',
           det: 'SF',
           category: 'American Blackjack',
@@ -39,6 +44,7 @@ const data = {
           image: '',
         },
         {
+          _id: '5',
           name: 'Suited Trips',
           det: 'ST',
           category: 'American Blackjack',
@@ -47,6 +53,7 @@ const data = {
           image: '',
         },
         {
+          _id: '6',
           name: 'Straight',
           det: 'Straight',
           category: 'American Blackjack',
@@ -55,6 +62,7 @@ const data = {
           image: '',
         },
         {
+          _id: '7',
           name: 'Golden Pair ',
           det: 'GP',
           category: 'American Blackjack',
@@ -63,6 +71,7 @@ const data = {
           image: '',
         },
         {
+          _id: '8',
           name: 'Buzz T ',
           det: 'Buzz',
           category: 'American Blackjack',
@@ -73,12 +82,14 @@ const data = {
       ],
     },
     {
+      _id: '2',
       name: 'Roulette',
       slug: 'European Roulettes',
       category: 'Roulette games',
       image: '/images/roulette.jpg',
       betTypes: [
         {
+          _id: '1',
           name: 'Straight',
           det: 'Roulette Straight',
           category: 'Roulette Games',
@@ -87,6 +98,7 @@ const data = {
           image: '',
         },
         {
+          _id: '2',
           name: 'Six Line',
           det: 'Sixline',
           category: 'Roulette Games',
@@ -95,6 +107,7 @@ const data = {
           image: '',
         },
         {
+          _id: '3',
           name: 'Split',
           det: 'Split',
           category: 'Roulette Games',
@@ -103,6 +116,7 @@ const data = {
             'A split bet is a bet on two adjacent numbers. If one of the numbers chosen is the winning number, the player will be paid 17:1.',
         },
         {
+          _id: '4',
           name: 'Street',
           det: 'Street',
           category: 'Roulette Games',
@@ -111,6 +125,7 @@ const data = {
           image: '',
         },
         {
+          _id: '5',
           name: '1-18/19-36',
           det: '1-18/19-36',
           category: 'Roulette Games',
@@ -118,6 +133,7 @@ const data = {
           image: '',
         },
         {
+          _id: '6',
           name: 'Even/Odd',
           det: 'Even and Odd',
           category: 'Roulette Games',
@@ -125,6 +141,7 @@ const data = {
           image: '',
         },
         {
+          _id: '7',
           name: 'Red/Black',
           det: 'Red/Black',
           category: 'Roulette Games',
@@ -132,6 +149,7 @@ const data = {
           image: '',
         },
         {
+          _id: '8',
           name: 'Corner',
           det: 'Corner',
           category: 'Roulette Games',
@@ -140,6 +158,7 @@ const data = {
           image: '',
         },
         {
+          _id: '9',
           name: 'Dozen',
           det: 'Dozen',
           category: 'Roulette Games',
@@ -148,6 +167,7 @@ const data = {
           image: '',
         },
         {
+          _id: '10',
           name: 'Column',
           det: 'COlumn',
           category: 'Roulette Games',
@@ -158,16 +178,58 @@ const data = {
       ],
     },
     {
+      _id: '3',
       name: 'Game Shows',
       slug: 'Game Shows',
       category: 'Game Shows',
       image: '/images/gameshow.jpeg',
     },
     {
+      _id: '4',
       name: 'Slots',
       slug: 'Slot Games',
       category: 'Slots',
       image: '/images/slot.jpg',
+    },
+  ],
+  refunds: [
+    {
+      _id: '1',
+      name: 'Refunds',
+      slug: 'Refunds',
+      token: 'OFFLINE_TOKEN',
+      currency: [
+        {
+          _id: '1',
+          name: 'Eur',
+        },
+        {
+          _id: '2',
+          name: 'USD',
+        },
+      ],
+      gameId: [
+        {
+          _id: '1',
+          name: 'LC3107',
+        },
+        {
+          _id: '2',
+          name: 'LC3108',
+        },
+        {
+          _id: '3',
+          name: 'LC3005',
+        },
+        {
+          _id: '4',
+          name: 'LC3112',
+        },
+        {
+          _id: '4',
+          name: 'LC3112',
+        },
+      ],
     },
   ],
 };
